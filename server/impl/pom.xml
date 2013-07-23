@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <!-- FIXME: This should be com.magnet.longisland -->
+    <groupId>com.magnetapi.longisland</groupId>
+    <artifactId>longisland</artifactId>
+    <version>1</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <artifactId>longisland-impl</artifactId>
+  <name>longisland - Magnet Custom Implementation</name>
+  <description>${project.name}</description>
+
+  <dependencies>
+
+    <!-- API -->
+    <dependency>
+      <groupId>com.magnetapi.longisland</groupId>
+      <artifactId>longisland-api</artifactId>
+      <version>1</version>
+    </dependency>
+    
+    <!-- API -->
+    <dependency>
+      <groupId>com.magnetapi.longisland</groupId>
+      <artifactId>longisland-entities</artifactId>
+      <version>1</version>
+    </dependency>
+
+    <!-- for annotation processing -->
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-profiles-magnet-apt</artifactId>
+      <version>${platform.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- for Controller -->
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-providers-controller-spi</artifactId>
+      <version>${platform.version}</version>
+    </dependency>
+    
+    <!--  for Jackson -->
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-mapper-asl</artifactId>
+      <version>1.9.4</version>
+    </dependency>
+
+    <!--
+      Testing dependencies
+    -->
+    <!-- for PlatformRunner -->
+    <dependency>
+      <groupId>com.magnet.platform.core</groupId>
+      <artifactId>magnet-core-test-utils-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- for remote testing -->
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-providers-rest-client</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- For remote testing: http rest client -->
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+
+
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-providers-managers-core</artifactId>
+      <version>${platform.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-providers-persister-jcr</artifactId>
+      <version>${platform.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-providers-contents-jackrabbit</artifactId>
+      <version>${platform.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-jdk14</artifactId>
+      <version>1.6.4</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+</project>

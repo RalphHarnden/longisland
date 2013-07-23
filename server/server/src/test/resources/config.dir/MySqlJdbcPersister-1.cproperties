@@ -1,0 +1,5 @@
+enabled=true
+url=jdbc:mysql://localhost:3306/longisland?createDatabaseIfNotExist=true
+user=db_user
+password=db_password
+domain=magnet

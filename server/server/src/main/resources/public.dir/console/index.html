@@ -1,0 +1,136 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <title>Magnet API Tester</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="stylesheets/console.css" />
+    <script data-main="js/desktop" src="js/libs/require.js"></script>
+</head>
+<body class="fullpos">
+<div id="header">
+    <div><img src="images/heading.png" alt="API Tester Heading" /></div>
+    <div class="page_title">
+        <h1>- API Tester -</h1>
+    </div>
+</div>
+<div id="explorer" class="column">
+    <div class="fullheight">
+        <div class="container fullpos">
+            <div class="heading">
+                <img src="images/icon_restapi.png" />
+            </div>
+            <div id="apiTree" class="fullpos">
+                <ul></ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="panels" class="column">
+    <div class="fullheight">
+        <div class="container fullpos">
+            <!-- slide in panel -->
+            <div id="editor" class="slide-panel-container hidden">
+                <div class="slide-panel">
+                    <div class="heading">
+                        <img src="images/icon_editor.png" />
+                        <div class="close">close</div>
+                    </div>
+                    <div class="well fullpos">
+                        <h4></h4>
+                        <div class="config">
+                            <a id="undoChanges" href="#" class="smbtn gray">Undo Changes</a>
+                            <a id="saveChanges" href="#" class="smbtn red">Save</a>
+                        </div>
+                        <div class="table-container fullpos">
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Property Name</th>
+                                        <th>Required</th>
+                                        <th>Attributes</th>
+                                        <th>Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- tabs -->    
+            <div class="subheading fullpos">    
+                <h2>REST URL<span></span></h2>
+                <a href="#">
+                    <div id="navigate">
+                        <!--<div class="mainPanel"></div>-->
+                        <ul class="dropdown hidden"></ul>
+                    </div>
+               </a>
+           </div>
+            <div id="panel-content" class="fullpos">
+                <div class="panelConfig">
+                    <a href="#" id="JSON"></a>
+                    <a href="#" id="TEXT" class="active"></a>
+                </div>
+                <ul class="tabs">
+                    <li class="active"><a href=".request">Request</a></li>
+                    <li><a href=".response">Response</a></li>
+                </ul>
+                <div class="tab_container fullpos">
+                    <div class="request tab_content hidden">
+                        <div class="TEXT tab_section">
+                            <h4>Request Header</h4>
+                            <div id="request_header"></div>
+                            <h4>Request Data</h4>
+                            <div id="request_data"></div>
+                        </div>
+                        <div class="JSON tab_section hidden">
+                            <h4>Request Header</h4>
+                            <div id="request_raw_header"></div>
+                            <h4>Request Data</h4>
+                            <div id="request_raw_data"></div>
+                        </div>
+                    </div>
+                    <div class="response tab_content hidden">
+                        <div class="TEXT tab_section">
+                            <h4>Response Header</h4>
+                            <div id="response_header"></div>
+                            <h4>Response Data</h4>
+                            <div id="response_data"></div>
+                        </div>
+                        <div class="JSON tab_section hidden">
+                            <h4>Response Header</h4>
+                            <div id="response_raw_header"></div>
+                            <h4>Response Data</h4>
+                            <div id="response_raw_data"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="messages" class="hidden"></div>
+<div id="msgBGK" class="fullscreen hidden"></div>
+<script id="messagesTmpl" type="text/x-jsrender">
+    <div class="failure">
+        <h3>{{:title}}</h3>
+        <p>{{:message}}</p>
+        {{if buttons}}
+        <p>
+        {{for buttons}}
+            <div id="{{:id}}" class="messageBtns">
+                <a>{{:title}}</a>
+            </div>
+        {{/for}}
+        </p>
+        {{/if}}
+    </div>
+</script>
+</body>
+</html>

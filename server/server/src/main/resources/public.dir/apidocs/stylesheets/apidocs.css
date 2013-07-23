@@ -1,0 +1,71 @@
+html, body{height:100%;margin:0;padding:0}
+#doc-nav{height:100%}
+
+#doc-nav {
+    bottom: 0;
+    float: left;
+    height: auto;
+    left: 0;
+    margin-top: 53px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#doc-nav > div{position:relative;height:100%}
+
+#header{z-index:1000;position:absolute;top:0;left:0;width:100%;height:51px;background:#000;box-shadow:3px 3px 3px #ccc}
+#header div{height:100%;width:33.33%;float:left;color:#fff}
+#header h1{font-size:22px;margin:3px auto 10px auto;text-align:center;font-family:helvetica;font-weight:normal}
+.page_title{background:url(../images/title_focus.png) no-repeat center bottom}
+#header img{text-align:left}
+#header h4{display:block;text-align:right;font-family:helvetica;font-weight:normal;font-size:12px;margin-right:14px}
+
+.table{background:#fff}
+h5{margin-top:30px}
+blockquote{margin-top:30px}
+.well blockquote.GET{border-color:#468847}
+.well blockquote.POST{border-color:#3A87AD}
+.well blockquote.PUT{border-color:#C09853}
+.well blockquote.DELETE{border-color:#B94A48}
+
+.span8{padding:20px 0 0}
+
+.bs-docs-sidebar{position:fixed;top:14px}
+
+/* without accordion
+.bs-docs-sidenav{margin:10px 0 0;padding:0;background-color:#fff;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;-webkit-box-shadow:0 1px 4px rgba(0,0,0,.065);-moz-box-shadow:0 1px 4px rgba(0,0,0,.065);box-shadow:0 1px 4px rgba(0,0,0,.065)}
+.bs-docs-sidenav>li>a{display:block;*width:190px;margin:0 0 -1px;padding:0 14px;border:1px solid #e5e5e5;font-size:12px}
+.bs-docs-sidenav>li:first-child>a{-webkit-border-radius:6px 6px 0 0;-moz-border-radius:6px 6px 0 0;border-radius:6px 6px 0 0}
+.bs-docs-sidenav>li:last-child>a{-webkit-border-radius:0 0 6px 6px;-moz-border-radius:0 0 6px 6px;border-radius:0 0 6px 6px}
+*/
+
+/* with accordion */
+.bs-docs-sidenav>li>a{padding:0px 12px;font-size:12px}
+
+.bs-docs-sidenav>.active>a{position:relative;z-index:2;padding:9px 15px;border:0;text-shadow:0 1px 0 rgba(0,0,0,.15);-webkit-box-shadow:inset 1px 0 0 rgba(0,0,0,.1),inset -1px 0 0 rgba(0,0,0,.1);-moz-box-shadow:inset 1px 0 0 rgba(0,0,0,.1),inset -1px 0 0 rgba(0,0,0,.1);box-shadow:inset 1px 0 0 rgba(0,0,0,.1),inset -1px 0 0 rgba(0,0,0,.1)}
+.bs-docs-sidenav .icon-chevron-right{float:right;margin-top:2px;margin-right:-6px;opacity:.25}
+.bs-docs-sidenav>li>a:hover{background-color:#f5f5f5}
+.bs-docs-sidenav a:hover .icon-chevron-right{opacity:.5}
+.bs-docs-sidenav .active .icon-chevron-right,.bs-docs-sidenav .active a:hover .icon-chevron-right{background-image:url(../images/glyphicons-halflings-white.png);opacity:1}
+.bs-docs-sidenav.affix{top:40px}
+.bs-docs-sidenav.affix-bottom{position:absolute;top:auto;bottom:270px}
+
+.item td{position:relative;display:block}
+.item td h5{margin:0;padding:0}
+/* .item td div{background:#0088CC;border-radius:6px;color:#FFF;font-weight:bold;padding:3px 4px;position:absolute;right:5px;top:5px} */
+
+.table-striped tbody tr:nth-child(2n+1) td, .table-striped tbody tr:nth-child(2n+1) th{background:#fff}
+.table-striped tbody tr:nth-child(2n) td, .table-striped tbody tr:nth-child(2n) th{background:#f9f9f9}
+
+h3{margin-left:15px}
+.sections{position:absolute;left:0;top:0;width:30%;overflow-y:scroll;height:100%}
+.sections li{margin-left:15px}
+.content_container{position:absolute;left:30%;top:0;width:70%;overflow-y:scroll;height:100%}
+
+#entityDocs, #controllerDocs{width:90%;margin:0 auto}
+
+pre{background-color:#F7F7F9;border:1px solid #E1E1E8;color:#DD1144;padding:2px 4px}
+
+.info-bullets{position:absolute;right:0;top:13px}
+span.label{margin-right:12px;border-radius:4px;padding:5px}

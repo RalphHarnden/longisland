@@ -1,0 +1,9 @@
+# Everyone can login and see the MEM console
+revoke namespace:/web/rest/ to everyone
+grant  namespace:/web/rest/ to users
+
+grant namespace:/web/rest/login to everyone
+grant namespace:/web/rest/controllers.json to everyone
+grant namespace:/web/rest/entities.json to everyone
+# mem_admin should have access to everything
+grant namespace:/web/rest/ to mem_admin

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.magnetapi.longisland</groupId>
+    <artifactId>longisland</artifactId>
+    <version>1</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <artifactId>longisland-api</artifactId>
+  <name>longisland - Magnet Custom API</name>
+  <description>${project.name}</description>
+
+  <dependencies>
+  
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-model-api</artifactId>
+      <version>${platform.version}</version>
+    </dependency>
+
+    <!-- for annotation processing -->
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-profiles-magnet-apt</artifactId>
+      <version>${platform.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- for Controller -->
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-providers-controller-spi</artifactId>
+      <version>${platform.version}</version>
+    </dependency>
+
+  </dependencies>
+
+</project>

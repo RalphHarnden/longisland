@@ -1,0 +1,201 @@
+  {
+  "AWSTemplateFormatVersion": "2010-09-09",
+   "Parameters": {
+          "KeyName": {
+          "Description": "Name of an existing EC2 KeyPair to enable SSH access to the instances", 
+          "Type": "String",
+          "MinLength": "1",
+  	  "MaxLength": "64",
+  	  "AllowedPattern" : "[-_ a-zA-Z0-9]*",
+          "ConstraintDescription" : "can contain only alphanumeric characters, spaces, dashes and underscores."
+          },
+          "AMIID": {
+	    "Description": "Name of an existing AMI from which to launch instances", 
+	    "Type": "String",
+	    "Default": "ami-d8537a9d",
+	    "MinLength": "1",
+	    "MaxLength": "64",
+	    "AllowedPattern" : "[-_ a-zA-Z0-9]*",
+	    "ConstraintDescription" : "can contain only alphanumeric characters, spaces, dashes and underscores."
+          },
+          "AvailabilityZone1" :{
+          "Description": "Name of availability zone in which to put Magnet server 1; Put 1 & 2 in different zones within the same region", 
+          "Type": "String",
+          "Default": "us-west-1a",
+          "AllowedValues": [
+		  "us-east-1a",
+		  "us-east-1c",
+		  "us-east-1d",
+		  "us-west-1a",
+		  "us-west-1b",
+		  "us-west-2a",
+		  "us-west-2b",
+		  "us-west-2c",
+		  "eu-west-1a",
+		  "eu-west-1b",
+		  "eu-west-1c",
+		  "ap-northeast-1a",
+		  "ap-northeast-1b",	
+		  "ap-northeast-1c",
+		  "sa-east-1a",
+		  "sa-east-1b",
+		  "ap-southeast-1a",	
+		  "ap-southeast-1b",
+		  "ap-southeast-2a",
+		  "ap-southeast-2b"	
+          	],
+          "ConstraintDescription": "must be a valid EC2 Availability zone."
+          },
+          "AvailabilityZone2" :{
+          "Description": "Name of availability zone in which to put Magnet server 2; Put 1 & 2 in different zones within the same region", 
+          "Type": "String",
+          "Default": "us-west-1b",
+          "AllowedValues": [
+		  "us-east-1a",
+		  "us-east-1c",
+		  "us-east-1d",
+		  "us-west-1a",
+		  "us-west-1b",
+		  "us-west-2a",
+		  "us-west-2b",
+		  "us-west-2c",
+		  "eu-west-1a",
+		  "eu-west-1b",
+		  "eu-west-1c",
+		  "ap-northeast-1a",
+		  "ap-northeast-1b",	
+		  "ap-northeast-1c",
+		  "sa-east-1a",
+		  "sa-east-1b",
+		  "ap-southeast-1a",	
+		  "ap-southeast-1b",
+		  "ap-southeast-2a",
+		  "ap-southeast-2b"	
+          	],
+          "ConstraintDescription": "must be a valid EC2 Availability zone."
+          },
+          "InstanceType": {
+              "Description": "Magnet Server EC2 instance type", 
+              "Type": "String", 
+              "Default": "m1.medium", 
+              "AllowedValues": [
+                  "t1.micro", 
+                  "m1.small", 
+                  "m1.medium", 
+                  "m1.large", 
+                  "m1.xlarge", 
+                  "m2.xlarge", 
+                  "m2.2xlarge", 
+                  "m2.4xlarge", 
+                  "m3.xlarge", 
+                  "m3.2xlarge", 
+                  "c1.medium", 
+                  "c1.xlarge", 
+                  "cc1.4xlarge", 
+                  "cc2.8xlarge", 
+                  "cg1.4xlarge"
+              ], 
+              "ConstraintDescription": "must be a valid EC2 instance type."
+          } 
+    }, 
+  "Resources": {
+    "longisland-ElasticLoadBalancer": {
+      "Type": "AWS::ElasticLoadBalancing::LoadBalancer",
+      "Properties": {
+        "AvailabilityZones" : { "Fn::GetAZs" : "" },        
+        "HealthCheck": {
+          "HealthyThreshold": "6",
+          "Interval": "30",
+          "Target": "HTTP:8080/rest/controllers.json",
+          "Timeout": "5",
+          "UnhealthyThreshold": "3"
+        },
+       "Instances" : [ { "Ref" : "Ec2Instance1" },{ "Ref" : "Ec2Instance2" } ],
+        "Listeners": [
+          {
+            "InstancePort": "8080",
+            "LoadBalancerPort": "80",
+            "Protocol": "HTTP",
+            "InstanceProtocol": "HTTP",
+            "PolicyNames": [
+              "AWSConsolePolicy-1"
+            ]
+          }
+        ],
+        "AppCookieStickinessPolicy": [
+          {
+            "PolicyName": "AWSConsolePolicy-1",
+            "CookieName": "jsessionid"
+          }
+        ]
+      }
+    },
+    "Ec2Instance1": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+        "AvailabilityZone": { "Ref" : "AvailabilityZone1" },
+        "DisableApiTermination": "FALSE",
+        "ImageId": { "Ref" : "AMIID" },
+        "InstanceType": { "Ref" : "InstanceType" },
+        "KernelId": "aki-f77e26b2",
+        "KeyName": { "Ref" : "KeyName" },
+        "Monitoring": "false",
+        "SecurityGroups": [
+          {
+            "Ref": "longisland-SecurityPolicyGroup"
+          }
+        ]
+      }
+    },
+    "Ec2Instance2": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+        "AvailabilityZone": { "Ref" : "AvailabilityZone2" },
+        "DisableApiTermination": "FALSE",
+        "ImageId": { "Ref" : "AMIID" },
+        "InstanceType": { "Ref" : "InstanceType" },
+        "KernelId": "aki-f77e26b2",
+        "KeyName": { "Ref" : "KeyName" },
+        "Monitoring": "false",
+        "SecurityGroups": [
+          {
+            "Ref": "longisland-SecurityPolicyGroup"
+          }
+        ]
+      }
+    },
+    "longisland-SecurityPolicyGroup": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "Security Group with SSH/HTTP/HTTPS from anywhere",
+        "SecurityGroupIngress": [
+          {
+            "IpProtocol": "tcp",
+            "FromPort": "22",
+            "ToPort": "22",
+            "CidrIp": "0.0.0.0/0"
+          },
+          {
+            "IpProtocol": "tcp",
+            "FromPort": "80",
+            "ToPort": "80",
+            "CidrIp": "0.0.0.0/0"
+          },
+          {
+            "IpProtocol": "tcp",
+            "FromPort": "443",
+            "ToPort": "443",
+            "CidrIp": "0.0.0.0/0"
+          },
+          {
+            "IpProtocol": "tcp",
+            "FromPort": "8080",
+            "ToPort": "8080",
+            "CidrIp": "0.0.0.0/0"
+          }
+        ]
+      }
+    }
+  },
+  "Description": "Magnet Enterprise Server Basic with\r\n- Elastic Load Balancer\r\n- Two instances should be in two different AZs in the same Region"
+}

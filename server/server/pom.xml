@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.magnetapi.longisland</groupId>
+    <artifactId>longisland</artifactId>
+    <version>1</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  <artifactId>longisland-server</artifactId>
+
+  <name>longisland - Magnet Enterprise Server</name>
+
+  <description>${project.name}</description>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <dependencies>
+          <dependency>
+            <groupId>com.magnet.platform.core</groupId>
+            <artifactId>magnet-core-maven-plugin</artifactId>
+            <version>${magnet.kernel.version}</version>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-buildtools</artifactId>
+            <version>${apache.cxf.buildtools.version}</version>
+            <type>jar</type>
+            <scope>compile</scope>
+          </dependency>
+        </dependencies>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <createDependencyReducedPom>false</createDependencyReducedPom>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <manifestEntries>
+                    <Main-Class>com.magnet.Main</Main-Class>
+                  </manifestEntries>
+                </transformer>
+                <transformer implementation="com.magnet.core.shade.CoreResourceTransformer" />
+                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                  <resource>META-INF/spring.handlers</resource>
+                </transformer>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                  <resource>META-INF/spring.schemas</resource>
+                </transformer>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                  <resource>META-INF/services/com.sun.tools.xjc.Plugin</resource>
+                </transformer>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                  <resource>META-INF/cxf/cxf.extension</resource>
+                </transformer>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
+                  <resource>META-INF/extensions.xml</resource>
+                </transformer>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
+                  <resource>META-INF/cxf/extensions.xml</resource>
+                </transformer>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                  <resource>META-INF/cxf/bus-extensions.txt</resource>
+                </transformer>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
+                  <resource>META-INF/cxf/bus-extensions.xml</resource>
+                </transformer>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
+                  <resource>META-INF/cxf/bus-extensions.xml</resource>
+                </transformer>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
+                  <resource>META-INF/wsdl.plugin.xml</resource>
+                </transformer>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
+                  <resource>META-INF/tools.service.validator.xml</resource>
+                </transformer>
+                <transformer implementation="org.apache.cxf.maven.PluginTransformer">
+                  <resource>META-INF/tools-plugin.xml</resource>
+                </transformer>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.XmlAppendingTransformer">
+                  <resource>META-INF/cxf/java2wsbeans.xml</resource>
+                </transformer>
+                <transformer implementation="org.apache.cxf.maven.CXFAllTransformer" />
+              </transformers>
+              <filters>
+                <filter>
+                  <artifact>*:*</artifact>
+                  <excludes>
+                    <exclude>META-INF/*.SF</exclude>
+                    <exclude>META-INF/*.DSA</exclude>
+                    <exclude>META-INF/*.RSA</exclude>
+                  </excludes>
+                </filter>
+              </filters>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <properties>
+    <!-- For use with exec:exec -->
+    <exec.executable>java</exec.executable>
+    <exec.args>-cp %classpath -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005
+        -Dconfig.dir=target/classes/config.dir -Ddata.dir=target/classes/data.dir com.magnet.Main</exec.args>
+    <!-- for use with exec:java -->
+    <exec.mainClass>com.magnet.Main</exec.mainClass>
+  </properties>
+
+  <dependencies>
+    <!-- Magnet server profile -->
+    <dependency>
+      <groupId>com.magnet.connect</groupId>
+      <artifactId>magnet-connect-maven-profiles-basic-server</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>com.magnet.platform</groupId>
+          <artifactId>magnet-platform-providers-persister-jcr</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <!-- additional depenencies not in the basic server -->
+    <!--
+      For transaction
+    -->
+    <!-- for Transaction API -->
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-providers-transaction-manager-api</artifactId>
+    </dependency>
+    <!-- for Transaction implementation -->
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-providers-transaction-manager-atomikos-impl</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-providers-transaction-manager-interceptor</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-providers-persister-jdbc-mySql</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+    </dependency>
+    <!-- For authentication/authorization -->
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-server-root-web-core-security</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-providers-security-atz</artifactId>
+    </dependency>
+    <!-- For client library -->
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-lang-root-objective_c</artifactId>
+    </dependency>
+    <!-- For client library -->
+    <dependency>
+      <groupId>com.magnet.platform.core</groupId>
+      <artifactId>magnet-core-server-base-utils</artifactId>
+    </dependency>
+    <!-- for test console -->
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-features-cors</artifactId>
+    </dependency>
+    <!-- For logging controller -->
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-features-user-impl</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-model-marshall-xml</artifactId>
+    </dependency>
+    <!-- for credential mapping -->
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-features-security-credentialmapper-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-features-security-credentialmapper-impl</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-features-security-credentialmapper-spi</artifactId>
+    </dependency>
+    <!-- for credential vault -->
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-features-security-credentialvault-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-features-security-credentialvault-configdriven</artifactId>
+    </dependency>
+    <!-- For oauth service -->
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-providers-security-oauth-spi</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-providers-security-oauth-impl</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-providers-security-oauth-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-providers-security-tokenservice-impl</artifactId>
+    </dependency>
+    <!-- end of additional dependencies-->
+    <!-- Custom Impl dependencies -->
+    <dependency>
+      <groupId>com.magnetapi.longisland</groupId>
+      <artifactId>longisland-impl</artifactId>
+      <version>1</version>
+    </dependency>
+    <!--
+     Testing dependencies
+    -->
+    <!-- for PlatformRunner -->
+    <dependency>
+      <groupId>com.magnet.platform.core</groupId>
+      <artifactId>magnet-core-test-utils-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <!-- for remote testing, MagnetRestException -->
+    <dependency>
+      <groupId>com.magnet.platform</groupId>
+      <artifactId>magnet-platform-providers-rest-client</artifactId>
+    </dependency>
+    <!--
+    <dependency>
+      <groupId>com.magnet</groupId>
+      <artifactId>helloworld-impl</artifactId>
+      <version>0.9.0-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    -->
+  </dependencies>
+
+</project>

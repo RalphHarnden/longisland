@@ -1,0 +1,163 @@
+/* general */
+html{height:100%;margin:0;padding:0}
+body{width:100%;min-width:850px;margin:0;padding:0;height:100%;border:0;background:#f8f8f8;font-size:90%;font:normal 12px Arial, sans-serif;color:#343434}
+#header{z-index:1000;position:absolute;top:0;left:0;width:100%;height:51px;background:#000;box-shadow:3px 3px 3px #ccc}
+#header div{height:100%;width:33.33%;float:left;color:#fff}
+#header h1{margin:10px auto;text-align:center;font-family:helvetica;font-weight:normal}
+.page_title{background:url(../images/title_focus.png) no-repeat center bottom}
+#header img{text-align:left}
+#header h4{display:block;text-align:right;font-family:helvetica;font-weight:normal;font-size:12px;margin-right:14px}
+.fullpos{height:auto;position:absolute;top:0;bottom:0;left:0;right:0}
+.column{margin-top:51px;height:100%;float:left;height:auto;position:absolute;top:0;bottom:0;left:0;right:0}
+.container{border:solid 1px #b6b6b6;margin:10px;background:#e9e9e9}
+.heading{height:46px;width:100%;background:url(../images/hdr_bkgd_parameters.gif) repeat-x 0 0}
+.config{background:#e3e3e3;height:20px;padding:10px 0}
+.fullheight{height:100%;position:relative}
+.halfheight{height:50%;position:relative}
+
+#explorer{width:22%;position:absolute;right:78%}
+#apiTree{overflow:auto;background:#e9e9e9;margin:52px 0 0 6px}
+
+/* gridview */
+
+/* editor panel */
+.slide-panel-container{bottom:0;height:60%;left:0;margin:0 7px;overflow:auto;position:absolute;right:0;box-shadow:0px 0px 5px #CCC;border:solid 1px #ccc;border-bottom:none;background:#ebebeb}
+.slide-panel h4{display:block;float:left;margin:4px;font-weight:normal;color:#8b8b8b}
+.slide-panel .close{float:right;color:#fff;margin:12px;cursor:pointer;font-weight:bold;font-size:14px}
+.slide-panel{margin:0}
+.slide-panel .config{background:none;height:20px;padding:0 0 9px}
+.slide-panel .config .smbtn{float:right}
+.slide-panel tr th, .slide-panel tr td{padding:6px;text-align:left;border-right:solid 1px #fff}
+.slide-panel tr td{padding:2px 6px}
+.slide-panel tr th{background:#ccc}
+.slide-panel tr td{background:#ebebeb}
+.slide-panel tr td.odd{background:#f9f9f9}
+.slide-panel input{width:100%;padding:5px 0;text-indent:4px}
+.slide-panel select{width:100%;padding:5px}
+.slide-panel .table-container{margin:0 12px;top:40px;overflow:auto}
+.slide-panel tr.sel td{background-color:#ccebfb}
+.well{margin:57px 10px 0;padding:10px 10px 0 10px;background:#fff;border:solid 1px #cbcbcb;border-bottom:none;border-radius:7px 7px 0 0}
+
+/* tab content */
+.tab_container{margin-top:46px;border:solid 1px #b6b6b6;border-bottom:none;background:#E3E3E3}
+.tab_content{height:100%;overflow:auto;margin:0}
+ul.tabs{z-index:1000;margin:0;padding:11px 0 0 0;list-style:none;height:35px;min-width:250px;width:100%;background:#f9f9f9}
+ul.tabs li{cursor:pointer;float:left;margin:0 0 0 10px;padding:0;height:35px;width:113px;position:relative;text-align:center;border:solid 1px #f9f9f9;border-radius:7px 7px 0 0}
+ul.tabs li a{text-decoration:none;display:block;width:100%;color:#999;font-size:15px;outline:0;font-weight:bold;line-height:31px}
+ul.tabs li a img{margin:-2px 3px 0;opacity:.6}
+ul.tabs li:hover{background:#f3f3f3;border:solid 1px #d9d9d9;border-bottom:none;border-radius:7px 7px 0 0}
+html ul.tabs li.active,html ul.tabs li.active:hover{z-index:1001;background:#e3e3e3;border:solid 1px #b6b6b6;border-bottom:#e3e3e3;border-radius:7px 7px 0 0}
+html ul.tabs li.active a{color:#666}
+html ul.tabs li.active img{opacity:1}
+
+/* messages */
+.messageBtns{float:left;padding:7px 12px;margin-left:8px;border-radius:4px;background:#be1100;cursor:pointer}
+.messageBtns a{cursor:pointer;font-size:14px;text-decoration:none;color:#fff;font-weight:bold}
+.messageBtns:hover{background:#8d0d00}
+#messages{z-index:2000;position:absolute;top:50%;left:0px;width:100%;height:1px;overflow:visible}
+#messages .failure{background:#f8f8f8;width:400px;height:200px;margin-left:-200px;position:absolute;top:-100px;left:50%;padding:15px;border:8px solid #be1100;box-shadow:0 0 35px #111}
+#messages .failure p{font-size:14px;padding:2px 8px}
+#messages .failure h3{color:#000;text-shadow:0.06em 0.06em 0.01em #ccc;width:100%;display:block}
+.fullscreen{background:#FFF;position:absolute;top:0%;left:0px;width:100%;height:100%;overflow:visible}
+.fullscreen .messageBtns{position:absolute;top:20px;right:20px}
+#msgBGK{background:#000;opacity:.76;z-index:1500}
+
+/* more on this later */
+#httplogger{margin:10px}
+.logtitle{background:none repeat scroll 0 0 #999;color:#FFF;cursor:pointer;font-size:11px;font-weight:bold;margin:1px 0 2px 0;padding:6px 0;text-indent:6px;text-shadow:1px 1px 1px #222}
+.logdata{background:#fff;padding:0 15px}
+
+/* tools menu */
+#navigate{width:152px;height:36px;cursor:pointer;position:absolute;right:-2px;top:1px}
+#navigate .mainPanel{z-index:1100;position:relative;background:url(../images/btn_dropdown.png) no-repeat 0 0;width:152px;height:36px}
+#navigate ul{z-index:1000;margin:-5px 0 0 0;background:url(../images/bkgd_dropdown.png) repeat-y 0 0;padding:0;width:152px;position:relative}
+#navigate li{margin:0;list-style-type:none;padding:8px 7px}
+#navigate li:hover{background:url(../images/bkgd_dropdown.png) repeat-y -152px 0;}
+#navigate .last{background:url(../images/bkgd_dropdown_last.png) no-repeat 0 0;position:absolute;bottom:-4px;height:4px;width:152px}
+#navigate li a{text-decoration:none;font-size:12px;color:#999;display:block;padding:5px 8px}
+
+/* console tools menu */
+
+#panels{width:78%;left:22%}
+#panels .container{margin:10px 10px 0 10px;border:none}
+#panels .content{margin:8px}
+#panels .slide-panel{position:absolute;bottom:0;height:100%;width:100%}
+#panels .gray{cursor:default}
+#panels .red{cursor:pointer}
+
+.slide-panel-container{bottom:0;height:100%;width:70%;z-index:500;left:0;margin:0 7px;overflow:auto;position:absolute;box-shadow:0px 0px 5px #CCC;border:solid 1px #ccc;border-bottom:none;background:#ebebeb}
+.subheading{width:100%;background:#F9F9F9}
+.subheading h2{font-size:15px;color:#666}
+#panel-content{margin-top:46px}
+.slide-panel-container{margin:0}
+ul.tabs{z-index:400;background:url(../images/tabmenu_bgk.png) repeat-x 0 0}
+.tab_container{background:#F3F3F3;border:solid 1px #999;border-bottom:none}
+ul.tabs li{background:#ccc;border:solid 1px #b5b6b8}
+ul.tabs li:hover{background:#dcdbdb;border:solid 1px #b5b6b8}
+html ul.tabs li.active,html ul.tabs li.active:hover{z-index:450;background:#f3f3f3;border:solid 1px #b5b6b8;border-bottom:none}
+html ul.tabs li.active a,html ul.tabs li.active:hover a{color:#333}
+.tab_section{margin:10px}
+
+#panels .tab_content{float:none;height:100%;overflow:none;width:100%}
+
+.tab_content{background:#f3f3f3}
+.tab_content h4{display:block;background:url(../images/section_bgk.png) repeat-x 0 0;margin:0 1px 0 0;padding:9px 0;text-indent:6px;font-size:18px;color:#fff}
+.tab_content table{width:100%;padding:0;text-align:left;font-size:14px;background:#F3F3F3;border-spacing:0;border-collapse:collapse;border-top:1px solid #F3F3F3;border-bottom:solid 5px #F3F3F3}
+.tab_content tr{margin:0;padding:0}
+.tab_content th{margin:0;padding:6px 0;background:#ccc;font-weight:bold;color:#666;text-indent:5px;border-right:solid 1px #F3F3F3}
+.tab_content td{width:50%;color:#444;text-indent:5px;margin:0;padding:3px 0}
+.tab_content .tr_odd{background-color:#fff}
+.tab_content .tr_even{background-color:#f5f5f5}
+
+.panelConfig{position:absolute;top:7px;right:10px}
+.panelConfig a{outline:0;width:74px;height:30px;float:left}
+.panelConfig #JSON{background:url(../images/type_toggle.png) no-repeat 0 0}
+.panelConfig #TEXT{background:url(../images/type_toggle.png) no-repeat -74px -30px}
+.panelConfig #JSON.active{background-position:0 -30px}
+.panelConfig #TEXT.active{background-position:-74px 0}
+
+.tooltip{z-index:600}
+
+/* general */
+.smbtn{border-radius:4px;padding:3px 8px;margin-left:10px;min-width:40px;text-align:center;color:#fff;text-decoration:none;display:block;float:left;font-weight:bold}
+.red{background:#cc0000}
+.redtxt{color:#cc0000;font-size:20px;font-weight:bold}
+.gray{background:#999}
+.hidden{display:none}
+.ajaxLoader{font-size:12px;font-weight:bold;display:none;position:absolute;top:0;left:0;width:100%;height:100%;z-index:2000;background:url(../images/ajax-loader.gif) no-repeat center center}
+.reduced{font-size:11px}
+
+/* Datepicker */
+.Zebra_DatePicker *{margin:0;padding:0;color:#000}
+.Zebra_DatePicker{position:absolute;background:#666;border:3px solid #666;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;display:none;z-index:100;font-family:Tahoma,Arial,Helvetica,sans-serif;font-size:13px}
+.Zebra_DatePicker table{border-collapse:collapse;border-spacing:0}
+.Zebra_DatePicker td,.Zebra_DatePicker th{text-align:center;padding:5px 0}
+.Zebra_DatePicker td{cursor:pointer}
+.Zebra_DatePicker .dp_daypicker,.Zebra_DatePicker .dp_monthpicker,.Zebra_DatePicker .dp_yearpicker{margin-top:3px}
+.Zebra_DatePicker .dp_daypicker td,.Zebra_DatePicker .dp_daypicker th,.Zebra_DatePicker .dp_monthpicker td,.Zebra_DatePicker .dp_yearpicker td{background:#E8E8E8;width:30px;border:1px solid #7BACD2}
+.Zebra_DatePicker .dp_header td{color:#FFF}
+.Zebra_DatePicker .dp_header .dp_previous,.Zebra_DatePicker .dp_header .dp_next{width:30px}
+.Zebra_DatePicker .dp_header .dp_caption{font-weight:bold}
+.Zebra_DatePicker .dp_header .dp_hover{background:#222;color:#FFF;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px}
+.Zebra_DatePicker .dp_header .dp_blocked{color:#888;cursor:default}
+.Zebra_DatePicker .dp_daypicker th{background:#FC3}
+.Zebra_DatePicker td.dp_not_in_month{background:#F3F3F3;color:#CDCDCD;cursor:default}
+.Zebra_DatePicker td.dp_weekend{background:#D8D8D8}
+.Zebra_DatePicker td.dp_weekend_disabled{color:#CCC;cursor:default}
+.Zebra_DatePicker td.dp_selected{background:#5A4B4B;color:#FFF!important}
+.Zebra_DatePicker td.dp_week_number{background:#FC3;color:#555;cursor:text;font-style:italic}
+.Zebra_DatePicker .dp_monthpicker td{width:33%}
+.Zebra_DatePicker .dp_yearpicker td{width:33%}
+.Zebra_DatePicker .dp_footer{margin-top:3px}
+.Zebra_DatePicker .dp_footer td{color:#FFF;padding:2px;font-weight:bold}
+.Zebra_DatePicker .dp_footer .dp_hover{background:#222;color:#FFF;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px}
+.Zebra_DatePicker td.dp_current{color:#C40000}
+.Zebra_DatePicker td.dp_disabled{background:#F3F3F3;color:#CDCDCD;cursor:default}
+.Zebra_DatePicker td.dp_hover{background:#482424;color:#FFF}
+button.Zebra_DatePicker_Icon{position:absolute;width:1px;height:1px;text-indent:-9000px;border:0;cursor:pointer;margin:0 0 0 5px;padding:0;line-height:0}
+button.Zebra_DatePicker_Icon_Inside{margin:0 0 0 2px}
+@media screen and (-webkit-min-device-pixel-ratio:0){button.Zebra_DatePicker_Icon_Inside{margin:0 5px 0 0}
+}
+
+/* tooltips */
+.tooltip{display:none;font-size:13px;position:absolute;border:1px solid #999;background-color:#ccc;padding:6px 7px;color:#333;border-radius:5px;box-shadow:1px 1px 6px #aaa}

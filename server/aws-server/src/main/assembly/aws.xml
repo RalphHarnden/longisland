@@ -1,0 +1,67 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+
+  <id>deploy</id>
+
+  <formats>
+    <format>zip</format>
+  </formats>
+
+  <includeBaseDirectory>false</includeBaseDirectory>
+
+  <fileSets>
+
+    <fileSet>
+      <directory>src/main/bin</directory>
+      <outputDirectory>bin</outputDirectory>
+      <useDefaultExcludes>true</useDefaultExcludes>
+      <filtered>true</filtered>
+    </fileSet>
+
+    <fileSet>
+      <directory>src/main/resources/config.dir</directory>
+      <outputDirectory>config.dir</outputDirectory>
+      <useDefaultExcludes>true</useDefaultExcludes>
+    </fileSet>
+    <fileSet>
+      <directory>src/main/resources/audit.config.dir</directory>
+      <outputDirectory>audit.config.dir</outputDirectory>
+      <useDefaultExcludes>true</useDefaultExcludes>
+    </fileSet>
+
+    <fileSet>
+      <directory>../server/src/test/resources/config.dir</directory>
+      <outputDirectory>config.dir</outputDirectory>
+      <useDefaultExcludes>true</useDefaultExcludes>
+    </fileSet>
+    <fileSet>
+      <directory>../server/src/test/resources/data.dir</directory>
+      <outputDirectory>data.dir</outputDirectory>
+      <useDefaultExcludes>true</useDefaultExcludes>
+    </fileSet>
+
+    <!-- copies over the audit uploader to the lib directory -->
+    <fileSet>
+      <directory>target/lib</directory>
+      <outputDirectory>lib</outputDirectory>
+      <useDefaultExcludes>true</useDefaultExcludes>
+    </fileSet>
+
+  </fileSets>
+
+  <dependencySets>
+    <dependencySet>
+      <outputDirectory>lib</outputDirectory>
+      <useProjectArtifact>false</useProjectArtifact>
+      <useTransitiveDependencies>false</useTransitiveDependencies>
+      <scope>runtime</scope>
+    </dependencySet>
+    <dependencySet>
+      <outputDirectory>api-lib</outputDirectory>
+      <useProjectArtifact>false</useProjectArtifact>
+      <useTransitiveDependencies>false</useTransitiveDependencies>
+      <scope>provided</scope>
+    </dependencySet>
+  </dependencySets>
+
+</assembly>
